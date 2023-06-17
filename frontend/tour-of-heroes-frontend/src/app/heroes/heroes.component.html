@@ -1,0 +1,24 @@
+<table class="table">
+
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">SpecialPower</th>
+
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr *ngFor="let hero of heroesData">
+            <th scope="row">{{ hero.id }}</th>
+            <td>{{ hero.name }}</td>
+            <td>{{ hero.specialPower }}</td>
+            <td>
+                <button [routerLink]="['/edit-hero', hero.id]">Editar</button>
+                <button (click)="removeHero(hero.id)">Excluir</button>
+            </td>
+        </tr>
+
+    </tbody>
+</table>

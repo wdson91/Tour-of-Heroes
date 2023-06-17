@@ -28,7 +28,7 @@ export class HeroesService {
           specialPower,
         },
       });
-      return 'Hero created successfully'
+      return { message: 'Hero created successfully' }
     } catch (error) {
       throw new BadRequestException(error);
     }
@@ -93,7 +93,7 @@ export class HeroesService {
           specialPower,
         },
       });
-      return 'Hero updated successfully'
+      return { message: 'Hero updated successfully' }
     }
     catch (error) {
       throw new BadRequestException(error);
@@ -117,7 +117,7 @@ export class HeroesService {
           id: id,
         },
       });
-      return 'Hero deleted successfully'
+      return { message: 'Hero deleted successfully' }
     } catch (error) {
       throw new BadRequestException(error);
     }
