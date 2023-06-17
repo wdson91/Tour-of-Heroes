@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HeroesService } from '../heroes.service';
+import { tap } from 'rxjs';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,7 +15,7 @@ export class CreateHeroComponent implements OnInit {
     specialPower: ''
   };
 
-  constructor(private heroesService: HeroesService) { }
+  constructor(private heroesService: HeroesService, private router: Router) { }
 
 
 
@@ -25,14 +27,25 @@ export class CreateHeroComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.hero);
-    this.heroesService.createHero(this.hero).subscribe((data: any) => {
-      console.log(data);
-      alert(data.message);
-    }, (error: any) => {
-      console.log(error);
-      alert(error.error.message);
-    });
+
+    this.heroesService.createHero(this.hero).pipe(
+      tap((data: any) => {
+        if (data.message === 'Hero created successfully') {
+          this.router.navigate(['/heroes']);
+        }
+      })
+    ).subscribe(
+      (data: any) => {
+        console.log(data);
+        alert(data.message);
+      }
+      ,
+      (error: any) => {
+
+        alert(error.error.message);
+      }
+    );
+
   }
 
 }

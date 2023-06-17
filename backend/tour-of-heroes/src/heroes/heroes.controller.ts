@@ -11,7 +11,7 @@ import { HeroesService } from './heroes.service';
 import { CreateHeroDto } from './dto/create-hero.dto';
 import { UpdateHeroDto } from './dto/update-hero.dto';
 /* eslint-disable */
-@Controller('heroes')
+@Controller('heroes-api')
 export class HeroesController {
   constructor(private readonly heroesService: HeroesService) { }
 

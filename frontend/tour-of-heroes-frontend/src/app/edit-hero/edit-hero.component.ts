@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Hero } from '../../../../../backend/tour-of-heroes/src/heroes/entities/hero.entity';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HeroesService } from '../heroes.service';
-import { finalize } from 'rxjs';
+import { finalize, tap } from 'rxjs';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-hero',
@@ -11,13 +12,14 @@ import { finalize } from 'rxjs';
 })
 export class EditHeroComponent implements OnInit {
 
+
   heroId: any = 0;
   hero: any = {
 
     name: '',
     specialPower: ''
   };
-  constructor(private router: Router, private route: ActivatedRoute, private heroesService: HeroesService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private heroesService: HeroesService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
@@ -37,8 +39,10 @@ export class EditHeroComponent implements OnInit {
   async onSubmit() {
     this.heroesService.updateHero(this.heroId, this.hero)
       .pipe(
-        finalize(() => {
-          this.router.navigate(['/heroes']);
+        tap((data: any) => {
+          if (data.success) {
+            this.router.navigate(['/heroes']);
+          }
         })
       )
       .subscribe(

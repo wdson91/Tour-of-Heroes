@@ -1,4 +1,5 @@
 <table class="table">
+    <input type="text" [(ngModel)]="searchText" (input)="filterHeroes()" placeholder="Search by name or special power" />
 
     <thead>
         <tr>
@@ -10,15 +11,17 @@
     </thead>
     <tbody>
 
-        <tr *ngFor="let hero of heroesData">
-            <th scope="row">{{ hero.id }}</th>
+        <tr *ngFor="let hero of heroesData | paginate: { itemsPerPage: 5, currentPage: paginaAtual }">
+            <th>{{ hero.id }}</th>
             <td>{{ hero.name }}</td>
             <td>{{ hero.specialPower }}</td>
             <td>
-                <button [routerLink]="['/edit-hero', hero.id]">Editar</button>
-                <button (click)="removeHero(hero.id)">Excluir</button>
+                <button [routerLink]="['/detail-hero', hero.id]"><i class="fa-solid fa-info"></i></button>
+                <button [routerLink]="['/edit-hero', hero.id]"><i class="fa-solid fa-pen-to-square"></i></button>
+                <button (click)="removeHero(hero.id)"><i class="fa-solid fa-trash"></i></button>
             </td>
         </tr>
 
     </tbody>
 </table>
+<pagination-controls (pageChange)="paginaAtual = $event"></pagination-controls>

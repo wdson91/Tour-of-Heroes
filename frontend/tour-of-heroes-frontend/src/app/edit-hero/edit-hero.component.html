@@ -5,6 +5,6 @@
     <input type="text" id="name" name="name" [(ngModel)]="hero.name">
 
     <label for="specialPower">Special Power:</label>
-    <input type="text" id="specialPower" name="specialPower" [(ngModel)]="hero.specialPower">
+    <input type="text" id="specialPower" name="specialPower" [(ngModel)]="hero.specialPower" required minlength="5">
     <button type="submit">Submit</button>
 </form>

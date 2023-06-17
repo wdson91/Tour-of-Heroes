@@ -9,7 +9,7 @@ export class HeroesService {
 
   constructor(private http: HttpClient) { }
 
-  private baseURL = `http://localhost:3000/heroes`;
+  private baseURL = `http://localhost:3000/heroes-api`;
 
 
   getAllHeroes(): Observable<any> {

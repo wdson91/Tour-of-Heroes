@@ -45,14 +45,18 @@ export class HeroesService {
 
   }
 
-  findOne(id: number) {
+  async findOne(id: number) {
 
     try {
-      return this.prisma.hero.findUnique({
+      const hero = await this.prisma.hero.findUnique({
         where: {
           id: id,
         },
       });
+      if (!hero) {
+        throw new BadRequestException('Hero does not exist');
+      }
+      return hero;
     } catch (error) {
       throw new BadRequestException(error);
 
