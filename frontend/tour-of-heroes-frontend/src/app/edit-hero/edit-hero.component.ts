@@ -23,13 +23,13 @@ export class EditHeroComponent implements OnInit {
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
-    this.heroId = id ? +id : null;
+    this.heroId = id
 
     this.heroesService.getOneHero(this.heroId).subscribe((data: any) => {
 
       this.hero = data;
     }, (error: any) => {
-      console.log(error);
+      this.router.navigate(['/heroes']);
       alert(error.error.message);
     });
 
