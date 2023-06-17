@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { HeroesService } from './heroes.service';
 import { HeroesController } from './heroes.controller';
-import { PrismaService } from 'prisma.service';
+import { PrismaService } from 'src/prisma.service';
 /* eslint-disable */
 @Module({
   controllers: [HeroesController],

@@ -13,7 +13,7 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
-                        "outputPath": "../../backend/tour-of-heroes/dist/angular-build",
+                        "outputPath": "dist/tour-of-heroes-frontend",
                         "index": "src/index.html",
                         "main": "src/main.ts",
                         "polyfills": [
