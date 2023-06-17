@@ -11,7 +11,7 @@ import { join } from 'path';
   imports: [
     HeroesModule,
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '../angular-build '),
+      rootPath: join(__dirname, '../angular-build'),
 
     }),
   ],
