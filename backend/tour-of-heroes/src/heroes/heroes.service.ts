@@ -1,7 +1,7 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateHeroDto } from './dto/create-hero.dto';
 import { UpdateHeroDto } from './dto/update-hero.dto';
-import { PrismaService } from 'src/prisma.service';
+import { PrismaService } from 'prisma.service';
 
 /* eslint-disable */
 @Injectable()
